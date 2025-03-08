@@ -10,6 +10,7 @@ function callDocker(fileName){
         return response.text();
     })
     .then(data => {
+        document.getElementById('output').innerHTML = `<pre>${data}</pre>`;
         console.log(data);
     })
     .catch(error => {
