@@ -1,0 +1,1 @@
+I'm just rawdogging it using vanilla js to learn and more importantly refresh my memory of frontend development 🔥
