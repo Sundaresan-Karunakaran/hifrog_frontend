@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css?family=Inter');
+div, h1{
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+}
+
+/* * {
+    outline: 2px solid red;
+} */
+
+select {
+    border: 2px solid black;
+    width: 230px;
+    border-radius: 5px;
+    height: 40px;
+    font-size: 18px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(https://cdn-icons-png.flaticon.com/512/1665/1665586.png) 96% / 10% no-repeat transparent;
+}
+
+input {
+    border: 2px solid black;
+    width: 230px;
+    border-radius: 5px;
+    height: 40px;
+    font-size: 18px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.logoBar {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    position: relative; 
+    width: 100%;
+}
+
+.logo {
+    position: absolute; 
+    left: 0;
+    width: 150;
+    height: 130;
+}
+
+.mainDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.rect {
+    border: 2px solid black;
+    width: 90%;
+    border-radius: 5px;
+    height: 230px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.miniRect {
+    border-right: 2px solid black;
+    width: 25%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.rightMost {
+    border: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px
+}
+
+.secondBox {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.secondBoxElement1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+}
+
+button {
+    background-color: #D9D9D9;
+    border: 2px solid black;
+    border-radius: 5px;
+    /* width: 130px; */
+    width: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+    min-width: 250px;
+    height: 50px;
+    font-size: 18px;
+    box-shadow: 3px 3px;
+}
+
+button:hover {
+    background-color: #b3b2b2;
+}
+
+.output{
+    height: auto;
+    min-height: 230px;
+}
+
+.secondRect {
+    height: auto;
+    min-height: 230px;
+}

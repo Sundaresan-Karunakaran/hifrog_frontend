@@ -3,14 +3,67 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Hifrog visualiser</h1>
-    </header>
+    <div class="mainDiv">
+        <div class="logoBar">
+            <img src="css/usilogo.svg " alt="USI logo" class="logo">
+            <header style="margin-top: 10px;">
+                <h1>Hifrog visualiser</h1>
+            </header>
+        </div>
+        <div class="rect">
+            
+            <div class="miniRect ">
+                <div>
+                    <h2>Example files</h2>
+                    <select name="fileSelect" onchange="changeParams(this, 'fileName')">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="sin_cos.c">sin_cos.c</option>
+                        <option value="tan.c">tan.c</option>
+                        <option value="test.c">test.c</option>
+                    </select>
+                </div>
+                
+            </div>
+            <div class="miniRect secondBox">
+                <div class="secondBoxElement1">
+                    <h2>Logic</h2>
+                    <select id="logicSelect" onchange="changeParams(this, 'logic')">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="prop">Propositional</option>
+                        <option value="qflia">Linear Integer Arithmetic</option>
+                        <option value="qflra">Linear Real Arithmetic</option>
+                        <option value="qfur">Equality with Uninterpreted Functions</option>
+                    </select>
+                </div>
+                <div class="secondBoxElement1">
+                    <h2>Claim</h2>
+                    <input type="number" id="quantity" name="quantity" min="1" max="1000" onchange="changeParams(this, 'claim')" placeholder="--enter a value--"> 
+                </div>
+                <div class="secondBoxElement1">
+                    <h2>Unwind</h2>
+                    <input type="number" id="quantity" name="quantity" min="1" max="1000" onchange="changeParams(this, 'unwind')" placeholder="--enter a value--"> 
+                </div>
+            </div>
+            <div class="miniRect">
+                <button onclick="runHifrog('sin_cos.c')">Run Hifrog</button>
+            </div>
+            <div class="miniRect rightMost">
+                <button onclick="deleteSummary()">Delete Summaries</button>
+                <button onclick="viewSummary()">View Summaries</button>
+            </div> 
 
-    <button onclick="callDocker('sin_cos.c')">sin_cos.c</button>
-    <div id="output"></div>
+            <!-- <button onclick="sayHelloDocker()">Say Hello!</button>
+            <button onclick="runHifrog('sin_cos.c')">sin_cos.c</button> -->
+        </div>
+        <div class="rect secondRect">
+            <div id="info"></div>
+            <div id="output"></div>
+        </div>
+    </div>
+
 
     <script src="main.js"></script>
 </body>
