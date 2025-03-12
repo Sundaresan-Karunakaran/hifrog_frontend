@@ -18,7 +18,7 @@ function sayHelloDocker(){
 }
 
 function runHifrog() {
-    const apiURL = 'http://localhost:3000/runHifrog?fileName='+fileName;
+    const apiURL = 'http://localhost:3000/runHifrog?fileName='+fileName+'&logic='+logic+'&claim='+claim+'&unwind='+unwind;
     if(!logic || !claim || !unwind || !fileName) {
         document.getElementById('output').innerHTML = `<pre>Missing parameters. Please enter all the values</pre>`;
         return
@@ -37,7 +37,6 @@ function runHifrog() {
         return response.text();
     })
     .then(data => {
-        console.log(data)
         document.getElementById('output').innerHTML = `<pre>${data}</pre>`;
     })
     .catch(error => {     
