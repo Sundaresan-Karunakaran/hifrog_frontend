@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>HiFrog Visualiser</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -23,6 +23,7 @@
                         <option value="sin_cos.c">sin_cos.c</option>
                         <option value="tan.c">tan.c</option>
                         <option value="test.c">test.c</option>
+                        <option value="test2.c">test2.c</option>
                     </select>
                 </div>
                 
@@ -53,6 +54,7 @@
             <div class="miniRect rightMost">
                 <button onclick="deleteSummary()">Delete Summaries</button>
                 <button onclick="viewSummary()">View Summaries</button>
+                <button onclick="generateGraph()">Generate Graph</button>
             </div> 
 
             <!-- <button onclick="sayHelloDocker()">Say Hello!</button>
@@ -60,11 +62,13 @@
         </div>
         <div class="rect secondRect">
             <div id="info"></div>
+            <div id="graphDiv"></div>
             <div id="output"></div>
         </div>
     </div>
 
-
-    <script src="main.js"></script>
+    <!-- <script src="graph.js" type="module"></script> -->
+    <script src="main.js" type="module"></script>
+    
 </body>
 </html>

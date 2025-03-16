@@ -1,3 +1,5 @@
+import {generateGraph} from './graph.js';
+
 let fileName, logic, claim, unwind;
 
 function sayHelloDocker(){
@@ -37,7 +39,10 @@ function runHifrog() {
         return response.text();
     })
     .then(data => {
+        let stateString = getStateString(data);
+        generateGraph(stateString);
         document.getElementById('output').innerHTML = `<pre>${data}</pre>`;
+
     })
     .catch(error => {     
         console.error('There has been a problem with your fetch operation:', error);
@@ -100,3 +105,25 @@ function viewSummary(){
         console.error('There has been a problem with your fetch operation:', error);
     });
 }
+
+function getStateString(hifrogOutput){
+    const startMarker = "*** INLINING function: __CPROVER_initialize";
+    const endMarker = "SYMEX TIME";
+
+    const startIdx = hifrogOutput.indexOf(startMarker);
+    const endIdx = hifrogOutput.indexOf(endMarker);
+
+    if (startIdx !== -1 && endIdx !== -1) {
+        return hifrogOutput.substring(startIdx, endIdx).trim();
+    } else {
+        return "Error: Specified markers not found in the output.";
+    }
+    
+}
+
+// Add at the end of main.js
+window.runHifrog = runHifrog;
+window.changeParams = changeParams;
+window.deleteSummary = deleteSummary;
+window.viewSummary = viewSummary;
+window.sayHelloDocker = sayHelloDocker;
