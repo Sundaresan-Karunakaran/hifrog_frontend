@@ -1,12 +1,8 @@
-// graph.js
-
 // Import mermaid.js from CDN
 import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
 
-// Initialize mermaid
 mermaid.initialize({ startOnLoad: false });
 
-// Export the function to generate the graph
 export function generateGraph(stateString) {
     let states = stateString.split('\n');
     let graphDefinition = `
@@ -29,15 +25,8 @@ export function generateGraph(stateString) {
             prevState = state;
         }
     }
-    // const graphDefinition = `
-    // graph TD
-    //     A[Start] --> B[End]
-    //     B --> C[Process]
-    // `;
-    
-    // Assuming you have a div with id "graphDiv" where the graph will be rendered
+
     document.getElementById("graphDiv").innerHTML = `<pre class="mermaid">${graphDefinition}</pre>`;
     
-    // Render the graph using mermaid
     mermaid.init(undefined, document.querySelectorAll(".mermaid"));
 }
