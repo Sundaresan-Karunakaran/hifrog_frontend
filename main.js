@@ -41,6 +41,7 @@ function runHifrog() {
     .then(data => {
         let stateString = getStateString(data);
         generateGraph(stateString);
+        
         document.getElementById('output').innerHTML = `<pre>${data}</pre>`;
 
     })
