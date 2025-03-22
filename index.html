@@ -1,74 +1,73 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>HiFrog Visualiser</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HiFrog Visualiser</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <div class="mainDiv">
-        <div class="logoBar">
-            <img src="css/usilogo.svg " alt="USI logo" class="logo">
-            <header style="margin-top: 10px;">
-                <h1>Hifrog visualiser</h1>
-            </header>
-        </div>
-        <div class="rect">
-            
-            <div class="miniRect ">
-                <div>
-                    <h2>Example files</h2>
-                    <select name="fileSelect" onchange="changeParams(this, 'fileName')">
-                        <option disabled selected value> -- select an option -- </option>
-                        <option value="sin_cos.c">sin_cos.c</option>
-                        <option value="tan.c">tan.c</option>
-                        <option value="test.c">test.c</option>
-                        <option value="test2.c">test2.c</option>
-                    </select>
-                </div>
-                
-            </div>
-            <div class="miniRect secondBox">
-                <div class="secondBoxElement1">
-                    <h2>Logic</h2>
-                    <select id="logicSelect" onchange="changeParams(this, 'logic')">
-                        <option disabled selected value> -- select an option -- </option>
-                        <option value="prop">Propositional</option>
-                        <option value="qflia">Linear Integer Arithmetic</option>
-                        <option value="qflra">Linear Real Arithmetic</option>
-                        <option value="qfur">Equality with Uninterpreted Functions</option>
-                    </select>
-                </div>
-                <div class="secondBoxElement1">
-                    <h2>Claim</h2>
-                    <input type="number" id="quantity" name="quantity" min="1" max="1000" onchange="changeParams(this, 'claim')" placeholder="--enter a value--"> 
-                </div>
-                <div class="secondBoxElement1">
-                    <h2>Unwind</h2>
-                    <input type="number" id="quantity" name="quantity" min="1" max="1000" onchange="changeParams(this, 'unwind')" placeholder="--enter a value--"> 
-                </div>
-            </div>
-            <div class="miniRect">
-                <button onclick="runHifrog('sin_cos.c')">Run Hifrog</button>
-            </div>
-            <div class="miniRect rightMost">
-                <button onclick="deleteSummary()">Delete Summaries</button>
-                <button onclick="viewSummary()">View Summaries</button>
-                <button onclick="generateGraph()">Generate Graph</button>
-            </div> 
-
-            <!-- <button onclick="sayHelloDocker()">Say Hello!</button>
-            <button onclick="runHifrog('sin_cos.c')">sin_cos.c</button> -->
-        </div>
-        <div class="rect secondRect">
-            <div id="info"></div>
-            <div id="graphDiv"></div>
-            <div id="output"></div>
-        </div>
-    </div>
-
-    <!-- <script src="graph.js" type="module"></script> -->
-    <script src="main.js" type="module"></script>
+  <div class="container">
+    <header class="header">
+      <img src="css/usilogo.svg" alt="USI logo" class="logo">
+      <h1>HiFrog Visualiser</h1>
+    </header>
     
+    <section class="panel">
+      <div class="controls">
+        <div class="control-group">
+          <h2>Example Files</h2>
+          <select name="fileSelect" onchange="changeParams(this, 'fileName')">
+            <option disabled selected value> -- select an option -- </option>
+            <option value="loop1.c">loop1.c</option>
+            <option value="main2_ok.c">main2_ok.c</option>
+            <option value="test.c">test.c</option>
+            <option value="test2.c">test2.c</option>
+          </select>
+        </div>
+        
+        <div class="control-group">
+          <h2>Logic</h2>
+          <select id="logicSelect" onchange="changeParams(this, 'logic')">
+            <option disabled selected value> -- select an option -- </option>
+            <option value="prop">Propositional</option>
+            <option value="qflia">Linear Integer Arithmetic</option>
+            <option value="qflra">Linear Real Arithmetic</option>
+            <option value="qfur">Equality with Uninterpreted Functions</option>
+          </select>
+        </div>
+        
+        <div class="control-group">
+          <h2>Claim</h2>
+          <input type="number" id="quantity" name="quantity" min="1" max="1000" onchange="changeParams(this, 'claim')" placeholder="Enter a value">
+        </div>
+        
+        <div class="control-group">
+          <h2>Unwind</h2>
+          <input type="number" id="quantity" name="quantity" min="1" max="1000" onchange="changeParams(this, 'unwind')" placeholder="Enter a value">
+        </div>
+      </div>
+      
+      <div class="button-grid">
+        <button class="primary-button" onclick="runHifrog('sin_cos.c')">Run HiFrog</button>
+        <button class="danger-button" onclick="deleteSummary()">Delete Summaries</button>
+        <button onclick="viewSummary()">View Summaries</button>
+        <button class="success-button" onclick="generateGraph()">Generate Graph</button>
+      </div>
+    </section>
+    
+    <section class="output-container">
+      <div class="output-tabs">
+        <div class="output-tab">Output</div>
+        <!-- <div class="output-tab">Graph</div> -->
+      </div>
+      <div id="graphDiv"></div>
+      <div id="output"></div>
+    </section>
+  </div>
+  
+  <script src="main.js" type="module"></script>
 </body>
 </html>

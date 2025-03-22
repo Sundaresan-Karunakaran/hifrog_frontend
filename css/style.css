@@ -1,125 +1,220 @@
-@import url('https://fonts.googleapis.com/css?family=Inter');
-div, h1{
-    font-family: 'Inter', sans-serif;
-    text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* * {
-    outline: 2px solid red;
-} */
-
-select {
-    border: 2px solid black;
-    width: 230px;
-    border-radius: 5px;
-    height: 40px;
-    font-size: 18px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background: url(https://cdn-icons-png.flaticon.com/512/1665/1665586.png) 96% / 10% no-repeat transparent;
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
+  line-height: 1.6;
+  margin: 0;
+  padding: 20px;
 }
 
-input {
-    border: 2px solid black;
-    width: 230px;
-    border-radius: 5px;
-    height: 40px;
-    font-size: 18px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
-.logoBar {
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    position: relative; 
-    width: 100%;
+.header {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .logo {
-    position: absolute; 
-    left: 0;
-    width: 150;
-    height: 130;
+  height: 60px;
+  margin-right: 20px;
 }
 
-.mainDiv {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
+.header h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #343a40;
+  margin: 0;
 }
 
-.rect {
-    border: 2px solid black;
-    width: 90%;
-    border-radius: 5px;
-    height: 230px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.panel {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+  margin-bottom: 25px;
 }
 
-.miniRect {
-    border-right: 2px solid black;
-    width: 25%;
-    height: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+.controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
 }
 
-.rightMost {
-    border: 0px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px
+.control-group {
+  margin-bottom: 5px;
 }
 
-.secondBox {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+.control-group h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #495057;
 }
 
-.secondBoxElement1 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 90%;
+select, input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: white;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  height: 42px;
+  appearance: none;
+}
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23343a40' d='M2.9 4.9c-.2-.2-.2-.5 0-.7s.5-.2.7 0L6 6.6l2.4-2.4c.2-.2.5-.2.7 0s.2.5 0 .7L6.4 7.6c-.2.2-.5.2-.7 0L2.9 4.9z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 30px;
+}
+
+select:focus, input:focus {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+input::placeholder {
+  color: #adb5bd;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
 }
 
 button {
-    background-color: #D9D9D9;
-    border: 2px solid black;
-    border-radius: 5px;
-    /* width: 130px; */
-    width: auto;
-    padding-left: 40px;
-    padding-right: 40px;
-    min-width: 250px;
-    height: 50px;
-    font-size: 18px;
-    box-shadow: 3px 3px;
+  background-color: #f1f3f5;
+  color: #212529;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 button:hover {
-    background-color: #b3b2b2;
+  background-color: #e9ecef;
+  border-color: #ced4da;
 }
 
-.output{
-    height: auto;
-    min-height: 230px;
+.primary-button {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
 }
 
-.secondRect {
-    height: auto;
-    min-height: 230px;
+.primary-button:hover {
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+.danger-button {
+  background-color: #dc3545;
+  color: white;
+  border-color: #dc3545;
+}
+
+.danger-button:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+.success-button {
+  background-color: #28a745;
+  color: white;
+  border-color: #28a745;
+}
+
+.success-button:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.output-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  margin-bottom: 25px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.output-tabs {
+  display: flex;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.output-tab {
+  padding: 12px 20px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #495057;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.output-tab.active {
+  color: #007bff;
+  border-bottom-color: #007bff;
+}
+
+#graphDiv {
+  padding: 20px;
+  min-height: 150px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+#output {
+  flex: 1;
+  padding: 20px;
+  height: 350px;
+  overflow-y: auto;
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #f8f9fa;
+  border-radius: 0 0 8px 8px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .logo {
+    margin-bottom: 10px;
+  }
+  
+  .button-grid {
+    grid-template-columns: 1fr;
+  }
 }
