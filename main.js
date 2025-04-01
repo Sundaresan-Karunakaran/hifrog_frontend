@@ -39,8 +39,8 @@ function runHifrog() {
         return response.text();
     })
     .then(data => {
-        let stateString = getStateString(data);
-        generateGraph(stateString);
+        let { stateString, result } = getStateAndResult(data);
+        generateGraph(stateString, result);
         
         document.getElementById('output').innerHTML = `<pre>${data}</pre>`;
 
@@ -107,20 +107,39 @@ function viewSummary(){
     });
 }
 
-function getStateString(hifrogOutput){
+function getStateAndResult(hifrogOutput) {
     const startMarker = "*** INLINING function: __CPROVER_initialize";
     const endMarker = "SYMEX TIME";
 
     const startIdx = hifrogOutput.indexOf(startMarker);
     const endIdx = hifrogOutput.indexOf(endMarker);
 
+    let stateString = "Error: Specified markers not found in the output.";
     if (startIdx !== -1 && endIdx !== -1) {
-        return hifrogOutput.substring(startIdx, endIdx).trim();
-    } else {
-        return "Error: Specified markers not found in the output.";
+        stateString = hifrogOutput.substring(startIdx, endIdx).trim();
     }
-    
+
+    const result = getVerificationResult(hifrogOutput);
+
+    return { stateString, result };
 }
+
+
+function getVerificationResult(hifrogOutput) {
+    const unsatPattern = /RESULT:\s*UNSAT/;
+    const satPattern = /RESULT:\s*SAT/;
+
+    if (unsatPattern.test(hifrogOutput)) {
+        console.log('UNSAT');
+        return "UNSAT - it holds"; // Success
+    } else if (satPattern.test(hifrogOutput)) {
+        console.log('SAT');
+        return "SAT - doesn't hold"; // Failed
+    } else {
+        return "Error: No verification result found.";
+    }
+}
+
 
 // Add at the end of main.js
 window.runHifrog = runHifrog;

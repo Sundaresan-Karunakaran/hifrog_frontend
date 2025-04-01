@@ -3,11 +3,12 @@ import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mi
 
 mermaid.initialize({ startOnLoad: false });
 
-export function generateGraph(stateString) {
+export function generateGraph(stateString, result) {
     const lines = stateString.split(/\r?\n/).filter(line => line.trim() !== "");
     const steps = [];
     const unwindingCounts = {}; 
-
+    const resultBox = document.getElementById("verfResult");
+    
     lines.forEach(line => {
         if (line.includes("INLINING")) {
             steps.push({ type: "Inlining", name: line.replace("*** INLINING function:", "").trim() });
@@ -51,6 +52,9 @@ export function generateGraph(stateString) {
     });
 
     mermaidGraph += `  Step${steps.length - 1} --> End(("End"))\n`;
+
+    document.getElementById("verfResult").innerHTML = `<pre>${result}</pre>`;
+    resultBox.className = result.includes("UNSAT") ? "success" : "failed";
 
     document.getElementById("graphDiv").innerHTML = `<pre class="mermaid">${mermaidGraph}</pre>`;
     mermaid.init(undefined, document.querySelectorAll(".mermaid"));
