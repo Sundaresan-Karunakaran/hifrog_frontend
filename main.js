@@ -1,6 +1,56 @@
 import {generateGraph} from './graph.js';
 
+
 let fileName, logic, claim, unwind;
+
+
+async function downloadOutput() {
+    const graphElement = document.getElementById("graphDiv");
+    const outputElement = document.getElementById("output");
+
+    if (!graphElement || !outputElement) {
+        console.error("Error: Output area not found!");
+        return;
+    }
+
+    try {
+        const canvas = await html2canvas(graphElement, { scale: 2 });
+        const imgData = canvas.toDataURL("image/png");
+
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF("p", "mm", "a4");
+
+        pdf.addImage(imgData, "PNG", 10, 10, 190, 0);
+
+        const outputText = outputElement.innerText || outputElement.textContent;
+        pdf.addPage(); 
+
+        pdf.setFont("helvetica", "normal");
+        pdf.setFontSize(12);
+
+        const marginLeft = 10;
+        const marginTop = 40; 
+        const maxWidth = 190;
+        const lineHeight = 7;
+
+        const splitText = pdf.splitTextToSize(outputText, maxWidth);
+
+        let yOffset = marginTop;
+        for (let i = 0; i < splitText.length; i++) {
+            if (yOffset + lineHeight > 297 - 10) { 
+                pdf.addPage();
+                yOffset = 10; 
+            }
+            pdf.text(splitText[i], marginLeft, yOffset);
+            yOffset += lineHeight;
+        }
+
+        pdf.save("hifrog_output.pdf");
+
+    } catch (error) {
+        console.error("Error exporting PDF:", error);
+    }
+}
 
 function sayHelloDocker(){
     const apiURL = 'http://localhost:3000/';
@@ -147,3 +197,4 @@ window.changeParams = changeParams;
 window.deleteSummary = deleteSummary;
 window.viewSummary = viewSummary;
 window.sayHelloDocker = sayHelloDocker;
+window.downloadOutput = downloadOutput;
