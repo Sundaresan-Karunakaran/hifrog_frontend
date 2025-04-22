@@ -20,14 +20,10 @@
     <section class="panel">
       <div class="controls">
         <div class="control-group">
-          <h2>Example Files</h2>
-          <select name="fileSelect" onchange="changeParams(this, 'fileName')">
-            <option disabled selected value> -- select an option -- </option>
-            <option value="loop1.c">loop1.c</option>
-            <option value="main2_ok.c">main2_ok.c</option>
-            <option value="test.c">test.c</option>
-            <option value="test2.c">test2.c</option>
-          </select>
+            <h2>Example Files</h2>
+            <select id="fileSelect" name="fileSelect" onchange="changeParams(this, 'fileName')">
+                <option disabled selected value> -- select an option -- </option>
+            </select>
         </div>
         
         <div class="control-group">

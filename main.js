@@ -191,6 +191,25 @@ function getVerificationResult(hifrogOutput) {
 }
 
 
+async function loadCFiles() {
+    const select = document.getElementById("fileSelect");
+    try {
+      const res = await fetch("http://localhost:3000/getFiles");
+      const files = await res.json();
+
+      files.forEach(file => {
+        console.log(file);
+        const option = document.createElement("option");
+        option.value = file;
+        option.textContent = file;
+        select.appendChild(option);
+      });
+    } catch (err) {
+      console.error("Error loading C files:", err);
+    }
+}
+
+
 // Add at the end of main.js
 window.runHifrog = runHifrog;
 window.changeParams = changeParams;
@@ -198,3 +217,4 @@ window.deleteSummary = deleteSummary;
 window.viewSummary = viewSummary;
 window.sayHelloDocker = sayHelloDocker;
 window.downloadOutput = downloadOutput;
+window.addEventListener("DOMContentLoaded", loadCFiles);
